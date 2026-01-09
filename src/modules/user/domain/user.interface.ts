@@ -1,5 +1,5 @@
-import { User } from '@src/modules/user/domain';
-import { UserDto } from '@src/modules/user/dto';
+import { User } from '@user/domain';
+import { UserDto } from '@user/dto';
 
 export interface IUser {
 	findOneByEmail(email: string): User | null;

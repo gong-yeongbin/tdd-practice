@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ConflictException } from '@nestjs/common';
-import { CreateUserService } from '@src/modules/user/use-case';
-import { IUser, USER_REPOSITORY } from '@src/modules/user/domain';
-import { User } from '@src/modules/user/domain';
-import { CreateUserDto } from '@src/modules/user/dto/request';
+import { CreateUserService } from '@user/use-case';
+import { IUser, USER_REPOSITORY } from '@user/domain';
+import { User } from '@user/domain';
+import { CreateUserDto } from '@user/dto/request';
 
 describe('CreateUserService', () => {
 	let service: CreateUserService;

@@ -1,6 +1,6 @@
 import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
-import { IUser, User } from '@src/modules/user/domain';
-import { UserDto } from '@src/modules/user/dto';
+import { IUser, User } from '@user/domain';
+import { UserDto } from '@user/dto';
 
 @Injectable()
 export class UserRepository implements IUser {
