@@ -3,7 +3,7 @@ import { UserDto } from '@src/modules/user/dto';
 
 export interface IUser {
 	findOneByEmail(email: string): User | null;
-	create(user: UserDto): User;
+	create(user: UserDto): User | null;
 	update(user: UserDto): User;
 	delete(id: number): boolean;
 }

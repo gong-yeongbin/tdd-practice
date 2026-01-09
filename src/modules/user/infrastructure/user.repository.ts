@@ -35,9 +35,14 @@ export class UserRepository implements IUser {
 		return true;
 	}
 
-	create(user: UserDto): User {
-		const createUser: User = { id: this.users.length + 1, ...user, created_date: new Date() };
-		this.users.push(createUser);
-		return createUser;
+	create(user: UserDto): User | null {
+		const findUser = this.users.find((u) => u.email === user.email);
+		if (!findUser) {
+			const createUser: User = { id: this.users.length + 1, ...user, created_date: new Date() };
+			this.users.push(createUser);
+			return createUser;
+		}
+
+		return null;
 	}
 }
