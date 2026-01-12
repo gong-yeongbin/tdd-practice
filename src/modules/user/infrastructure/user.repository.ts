@@ -6,6 +6,14 @@ import { UserDto } from '@user/dto';
 export class UserRepository implements IUser {
 	private readonly users: User[] = [];
 
+	findOneById(id: number): User | null {
+		const findUser = this.users.find((u) => u.id === id);
+		if (!findUser) {
+			return null;
+		}
+		return findUser;
+	}
+
 	findOneByEmail(email: string): User | null {
 		const findUser = this.users.find((u) => u.email === email);
 		if (!findUser) {

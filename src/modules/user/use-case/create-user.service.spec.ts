@@ -11,6 +11,7 @@ describe('CreateUserService', () => {
 
 	beforeEach(async () => {
 		const mockRepository: IUser = {
+			findOneById: jest.fn(),
 			findOneByEmail: jest.fn(),
 			create: jest.fn(),
 			update: jest.fn(),
@@ -31,7 +32,7 @@ describe('CreateUserService', () => {
 		repository = module.get<IUser>(USER_REPOSITORY);
 	});
 
-	it('UserRepository의 findOne 메서드를 호출하여 유저를 조회 한다, 존재한다면 예외 발생', () => {
+	it('UserRepository의 findOneByEmail 메서드를 호출하여 유저를 조회 한다, 존재한다면 예외 발생', () => {
 		const userDto: CreateUserDto = {
 			email: 'existing@example.com',
 			password: 'password123',
