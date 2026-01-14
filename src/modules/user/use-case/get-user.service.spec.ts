@@ -65,3 +65,5 @@ describe('GetUserService', () => {
 		expect(result.created_date).toBeInstanceOf(Date);
 	});
 });
+
+// UserRepository는 mock으로 주입하고 "실패하는 Jest 테스트 코드"만 작성하고 createDate는 Date타입만 테스트해줘. 테스트가 지금은 실패해도 괜찮고, 구현을 만들면 통과할 수 있도록 의도를 명확히 드러내 줘.

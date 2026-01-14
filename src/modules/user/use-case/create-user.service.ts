@@ -8,16 +8,13 @@ import { plainToInstance } from 'class-transformer';
 export class CreateUserService {
 	constructor(@Inject(USER_REPOSITORY) private readonly userRepository: IUser) {}
 
-	execute(userDto: CreateUserDto): ResponseCreateUserDto | null {
+	execute(userDto: CreateUserDto): ResponseCreateUserDto {
 		const user = this.userRepository.findOneByEmail(userDto.email);
 		if (user) {
 			throw new ConflictException();
 		}
 
 		const createUser = this.userRepository.create(userDto);
-		if (createUser) {
-			return plainToInstance(ResponseCreateUserDto, createUser);
-		}
-		return null;
+		return plainToInstance(ResponseCreateUserDto, createUser);
 	}
 }

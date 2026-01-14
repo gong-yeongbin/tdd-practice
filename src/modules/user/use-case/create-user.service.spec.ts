@@ -52,7 +52,7 @@ describe('CreateUserService', () => {
 		expect(repository.findOneByEmail).toHaveBeenCalledWith(userDto.email);
 	});
 
-	it('UserRepository의 create 메서드를 호출하여 유저를 생성 한다', () => {
+	it('UserRepository의 create 메서드를 호출하여 유저를 생성 한다. create 메서드의 리턴 UserEntity 객체를 ResponseCreateUserDto로 역직열화 하여 반환한다.', () => {
 		const userDto: CreateUserDto = {
 			email: 'new@example.com',
 			password: 'password123',
@@ -75,8 +75,13 @@ describe('CreateUserService', () => {
 
 		expect(repository.create).toHaveBeenCalledTimes(1);
 		expect(repository.create).toHaveBeenCalledWith(userDto);
-		expect(result).toEqual(createdUser);
+
+		expect(result).toBeDefined();
+		expect(result.id).toBe(createdUser.id);
+		expect(result.email).toBe(createdUser.email);
+		expect(result.created_date).toBeInstanceOf(Date);
 	});
 });
 
 // UserRepository는 mock으로 주입하고 "실패하는 Jest 테스트 코드"만 작성해줘.테스트가 지금은 실패해도 괜찮고, 구현을 만들면 통과할 수 있도록 의도를 명확히 드러내 줘.
+// 수정된 요구사항만 "실패하는 Jest 테스트 코드"만 다시 작성하고 createDate는 Date타입만 테스트해줘. 테스트가 실패해도 괜찮고, 구현을 만들면 통과할 수 있도록 의도를 명확히 드러내줘.
