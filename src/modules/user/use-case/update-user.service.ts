@@ -8,7 +8,7 @@ import { plainToInstance } from 'class-transformer';
 export class UpdateUserService {
 	constructor(@Inject(USER_REPOSITORY) private readonly userRepository: IUser) {}
 
-	execute(updateUserDto: UpdateUserDto): ResponseUpdateUserDto | null {
+	execute(updateUserDto: UpdateUserDto): ResponseUpdateUserDto {
 		const findUser = this.userRepository.findOneById(updateUserDto.id);
 		if (!findUser) {
 			throw new NotFoundException();
@@ -18,9 +18,6 @@ export class UpdateUserService {
 		findUser.password = updateUserDto.password;
 
 		const updatedUser = this.userRepository.update(findUser);
-		if (updatedUser) {
-			return plainToInstance(ResponseUpdateUserDto, updatedUser);
-		}
-		return null;
+		return plainToInstance(ResponseUpdateUserDto, updatedUser);
 	}
 }

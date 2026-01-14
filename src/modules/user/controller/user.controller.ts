@@ -17,7 +17,7 @@ export class UserController {
 	}
 
 	@Patch()
-	updateUser(@Body() updateUserDto: UpdateUserDto): ResponseUpdateUserDto | null {
+	updateUser(@Body() updateUserDto: UpdateUserDto): ResponseUpdateUserDto {
 		return this.updateUserService.execute(updateUserDto);
 	}
 
