@@ -6,5 +6,5 @@ export interface IUser {
 	findOneByEmail(email: string): User | null;
 	create(user: UserDto): User | null;
 	update(user: UserDto): User;
-	delete(id: number): boolean;
+	delete(id: number): void;
 }

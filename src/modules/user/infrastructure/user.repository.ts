@@ -33,14 +33,13 @@ export class UserRepository implements IUser {
 		}
 	}
 
-	delete(id: number): boolean {
+	delete(id: number): void {
 		const findIndex: number = this.users.findIndex((u) => u.id === id);
 		if (findIndex === -1) {
 			throw new NotFoundException();
 		} else {
 			this.users.splice(findIndex, 1);
 		}
-		return true;
 	}
 
 	create(user: UserDto): User {
